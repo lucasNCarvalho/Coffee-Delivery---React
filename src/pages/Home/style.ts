@@ -6,7 +6,8 @@ export const HomeContainer = styled.div`
     flex-direction: column;
     margin-top: 5.87rem;
     margin-bottom: 9.81rem;
-
+    /* margin-right: 10rem;
+    margin-left: 10rem;; */
 `
 
 export const Header = styled.header`
@@ -97,17 +98,9 @@ export const Container = styled.div`
         grid-template-columns: 1fr 1fr 1fr 1fr
 
     }   
-
-    @media (min-width: 1536px) { 
-
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr
-
-    }   
-
 `
 
 export const Body = styled.div`
-    
     p {
         font: ${(props) => props.theme["Baloo2-Title-L ExtraBold"]};
     }

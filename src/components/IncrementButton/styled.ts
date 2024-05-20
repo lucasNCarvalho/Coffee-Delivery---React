@@ -1,20 +1,28 @@
 import styled from "styled-components";
 
-export const CardButtonContainer = styled.div`
+export const IncrementButtonContainer = styled.div`
+    
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: ${(props) => props.theme["base-button"]};
-    width: 72px;
+    width: 100%;
+    min-width: 72px;
     border-radius: 4px;
-    padding: 0.53rem 0.53rem;
+    gap: 0.25rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    border-radius: 8px;
 
     p {
         font: ${(props) => props.theme["Roboto-TextM Regular"]};
+        padding: 0.53rem 0;
     }
 
-    h1 {
+    span {
+        font: inherit !important;
         color:  ${(props) => props.theme.purple};
-        font: bold
+        font-weight: bold;
+        cursor: pointer;
     }
 `

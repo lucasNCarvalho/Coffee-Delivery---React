@@ -39,6 +39,6 @@ export const defaultTheme = {
 
     'Tag': "700 0.625rem/1.3 'Roboto', sans-serif",
     'ButtonG': "700 0.875rem/1.6 'Roboto', sans-serif",
-    'ButtonM': "400 0.750rem/1.6 'Roboto', sans-serif",
+    'ButtonS': "400 0.750rem/1.6 'Roboto', sans-serif",
     
 }

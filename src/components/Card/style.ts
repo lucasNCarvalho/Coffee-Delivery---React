@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-    max-width: 256px;
+    max-width: 16rem;
     padding: 0 1.5rem;
     background-color: ${(props) => props.theme["base-card"]};
     text-align: center;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 30px;
+    border-top-right-radius: 1.8rem;
+    border-bottom-left-radius: 1.8rem;
 `
 export const Header = styled.div`
     display: flex;
@@ -14,8 +14,8 @@ export const Header = styled.div`
     align-items: center;
 
     img {
-        margin-top: -20px;
-        max-width: 120px;
+        margin-top: -1.25rem;
+        max-width: 7.5rem;
     }
    
    span {
@@ -40,6 +40,11 @@ export const Header = styled.div`
 
 `
 
+export const Label = styled.div`
+    display: flex;
+    gap: 0.25rem;
+`
+
 export const Footer = styled.div`
     padding-top: 2.28rem;
     padding-bottom: 1.78rem;
@@ -47,7 +52,8 @@ export const Footer = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    
+   
+
     h1 { 
         font: ${(props) => props.theme["Roboto-TextS Regular"]};
     }

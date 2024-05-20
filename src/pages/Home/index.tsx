@@ -3,6 +3,7 @@ import Coffee_Art_01 from '../../assets/Coffee_Art_01.svg'
 import { Body, Container, GridIcon, Header, HeaderTextSection, HomeContainer } from "./style";
 import { defaultTheme } from "../../styles/themes/default";
 import { Card } from "../../components/Card";
+import { coffeeDataBase } from "../../database";
 
 
 export const Home = () => {
@@ -60,12 +61,16 @@ export const Home = () => {
       <Body>
         <p>Nossos Cafés</p>
         <Container>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {coffeeDataBase.map((item) => (
+            <Card
+              id={item.id}
+              img={item.img}
+              label={item.label}
+              title={item.title}
+              description={item.description}
+              price={item.price}
+            />
+          ))}
         </Container>
       </Body>
 
