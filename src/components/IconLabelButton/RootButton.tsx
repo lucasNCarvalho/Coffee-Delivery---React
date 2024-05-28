@@ -3,11 +3,15 @@ import { RootContainer } from './RootButton_styled';
 
 interface RootProps  {
     children: ReactNode;
+    onClick: () => void;
 }
 
-export const RootButton = ({children}: RootProps) => {
+export const RootButton = ({children, onClick}: RootProps) => {
+
+
+
   return (
-    <RootContainer>
+    <RootContainer onClick={onClick}>
         {children}
     </RootContainer>
   )

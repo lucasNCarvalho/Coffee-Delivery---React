@@ -2,14 +2,15 @@ import { FormProvider, useForm } from "react-hook-form"
 import { CheckoutForm } from "./CheckoutForm"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as zod from 'zod'
-import { CheckoutContainer, CheckoutFooter, Header, PaymentContainer, Title } from "./styled"
-import { CurrencyDollar } from "@phosphor-icons/react"
-import { defaultTheme } from "../../styles/themes/default"
+import { CheckoutContainer, Title } from "./styled"
 import { CheckoutOrder } from "./CheckoutOrder"
-import { IconLabelButton } from "../../components/IconLabelButton/IndexButton"
-import { CreditCard, Cardholder, Money } from "@phosphor-icons/react"
+import { useContext } from "react"
+import { OrderContext } from "../../contexts/OrderContext"
+import { useNavigate } from "react-router-dom";
 
-type checoutFormData = zod.infer<typeof checkoutFormValidationSchema>
+
+
+export type checoutFormData = zod.infer<typeof checkoutFormValidationSchema>
 
 const checkoutFormValidationSchema = zod.object({
   cep: zod.string().min(1, 'Informe o CEP'),
@@ -18,7 +19,8 @@ const checkoutFormValidationSchema = zod.object({
   complement: zod.string(),
   neighborhood: zod.string().min(1, 'Informe o bairro'),
   city: zod.string().min(1, 'Informe a cidade'),
-  state: zod.string().min(1, 'Informe um estado')
+  state: zod.string().min(1, 'Informe um estado'),
+  paymentMethod: zod.string()
 })
 
 
@@ -32,60 +34,44 @@ export const Checkout = () => {
       complement: '',
       neighborhood: '',
       city: '',
-      state: ''
+      state: '',
+      paymentMethod: ''
     }
   })
+  const { completeOrder , orderState } = useContext(OrderContext)
 
   const { handleSubmit } = checkoutForm;
+  const navigate = useNavigate();
 
-  function handleCreateRequest() {
-
+  function handleCreateOrderForm(data: checoutFormData) {
+    if(orderState.order.length > 0) {
+      completeOrder(data)
+      navigate('/success')
+    } 
+    
   }
 
+
+
   return (
-    <CheckoutContainer>
-      <div>
-        <Title>Complete seu pedido</Title>
-        <form action="" onSubmit={handleSubmit(handleCreateRequest)}>
+    <form action="" onSubmit={handleSubmit(handleCreateOrderForm)}>
+      <CheckoutContainer>
+        <div>
+          <Title>Complete seu pedido</Title>
+
           <FormProvider {...checkoutForm}>
             <CheckoutForm />
           </FormProvider>
-        </form>
-        <CheckoutFooter>
-          <Header>
-            <CurrencyDollar size={22} color={defaultTheme["purple-dark"]} />
-            <div>
-              <h1>Pagamento</h1>
-              <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
-            </div>
-          </Header>
-          <PaymentContainer>
-            <IconLabelButton.Root>
-              <IconLabelButton.Icon icon={CreditCard} />
-              <IconLabelButton.Content text="CARTÃO DE CRÉDITO" />
-            </IconLabelButton.Root>
-
-            <IconLabelButton.Root>
-              <IconLabelButton.Icon icon={Cardholder} />
-              <IconLabelButton.Content text="CARTÃO DE DEBITO" />
-            </IconLabelButton.Root>
-
-            <IconLabelButton.Root>
-              <IconLabelButton.Icon icon={Money} />
-              <IconLabelButton.Content text="DINHEIRO" />
-            </IconLabelButton.Root>
-          </PaymentContainer>
-        </CheckoutFooter>
-
-      </div>
-
-      <div>
-        <Title>Cafés selecionados</Title>
-        <div>
-          <CheckoutOrder />
         </div>
-      </div>
 
-    </CheckoutContainer>
+        <div>
+          <Title>Cafés selecionados</Title>
+          <div>
+            <CheckoutOrder />
+          </div>
+        </div>
+
+      </CheckoutContainer>
+    </form>
   )
 }

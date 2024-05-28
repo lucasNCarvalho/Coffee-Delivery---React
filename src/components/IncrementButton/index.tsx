@@ -1,27 +1,19 @@
-import { useState } from "react";
+
 import { IncrementButtonContainer } from "./styled"
 
+interface IncrementButtonProps {
+  quantity: number,
+  incrementAdd: () => void,
+  decrement: () => void
+}
 
 
-export const IncrementButton = () => {
-
-  const [increment, SetIncrement] = useState(1);
-
-  function incrementAdd() {
-
-    SetIncrement(increment => increment += 1)
-  }
-
-  function decrement() {
-    if (increment > 0) {
-      SetIncrement(increment => increment -= 1)
-    }
-  }
+export const IncrementButton = ({quantity, incrementAdd, decrement}: IncrementButtonProps ) => {
 
   return (
     <IncrementButtonContainer >
       <span onClick={decrement}>&minus;</span>
-      <p>{increment}</p>
+      <p>{quantity}</p>
       <span onClick={incrementAdd}>+</span>
     </IncrementButtonContainer >
   )

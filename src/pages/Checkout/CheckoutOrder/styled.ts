@@ -61,7 +61,7 @@ export const OrderValue = styled.span`
 `
 
 interface PriceContainerProps {
-    bold?: boolean;
+    $bold?: boolean;
 }
 
 export const PriceContainer = styled.div`
@@ -79,11 +79,11 @@ export const PriceItem = styled.div<PriceContainerProps>`
     justify-content: space-between;
     
     p {
-        font: ${(props) => props.bold ? props.theme["Roboto-TextL Bold"] : props.theme["Roboto-TextS Regular"]};
+        font: ${(props) => props.$bold ? props.theme["Roboto-TextL Bold"] : props.theme["Roboto-TextS Regular"]};
     }
 
     span {
-        font: ${(props) =>props.bold ? props.theme["Roboto-TextL Bold"] : props.theme["Roboto-TextM Regular"]};
+        font: ${(props) =>props.$bold ? props.theme["Roboto-TextL Bold"] : props.theme["Roboto-TextM Regular"]};
     }
 `
 
@@ -94,4 +94,5 @@ export const PriceButton = styled.button`
     border: 0;
     border-radius: 8px;
     margin-bottom: 2.5rem;
+    cursor: pointer;
 `

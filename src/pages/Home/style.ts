@@ -76,15 +76,16 @@ export const GridIcon = styled.div`
 export const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr;
+    justify-items: center;
     padding-top: 2.12rem;
     gap: 2.5rem;
-    justify-items: center;
+    
 
 
     @media (min-width: 768px) { 
 
-        grid-template-columns: 1fr 1fr
-
+        grid-template-columns: 1fr 1fr;
+        justify-items: start;
     }
 
     @media (min-width: 1024px) { 
@@ -98,6 +99,12 @@ export const Container = styled.div`
         grid-template-columns: 1fr 1fr 1fr 1fr
 
     }   
+
+    @media (min-width: 1280px) { 
+
+    grid-template-columns: 1fr 1fr 1fr 1fr
+
+}          
 `
 
 export const Body = styled.div`

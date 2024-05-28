@@ -2,8 +2,11 @@ import { CurrencyDollar, Timer, MapPin } from "@phosphor-icons/react";
 import Illustration from '../../assets/Illustration.svg'
 import { OrderConfirmedContainer, OrderContent, OrderItem } from "./styled";
 import { defaultTheme } from "../../styles/themes/default";
+import { useContext } from "react";
+import { OrderContext } from "../../contexts/OrderContext";
 
 export const OrderConfirmed = () => {
+  const { orderState } = useContext(OrderContext)
   return (
     <OrderConfirmedContainer>
       <div>
@@ -18,7 +21,7 @@ export const OrderConfirmed = () => {
               weight="fill"
               size={32}
             />
-            <p>Entrega em <span>Rua joão Daniel Martinelli, 102</span> Farrapos - Porto Alegre, RS</p>
+            <p>Entrega em <span>{orderState.formDetails.street},{orderState.formDetails.number}</span> Farrapos - Porto Alegre, RS</p>
           </OrderItem>
           <OrderItem>
             <Timer
@@ -40,7 +43,7 @@ export const OrderConfirmed = () => {
               size={32} />
             <div>
               <p>Pagamento na entrega</p>
-              <span>Cartão de Crédito</span>
+              <span>{orderState.formDetails.paymentMethod}</span>
             </div>
           </OrderItem>
         </OrderContent>

@@ -63,7 +63,7 @@ export const Home = () => {
         <Container>
           {coffeeDataBase.map((item) => (
             <Card
-              id={item.id}
+              key={item.title}
               img={item.img}
               label={item.label}
               title={item.title}

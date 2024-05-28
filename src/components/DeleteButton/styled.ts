@@ -9,6 +9,7 @@ export const DeleteButtonContainer = styled.div`
     min-width: 5.6rem;
     background-color: ${(props) => props.theme["base-button"]};
     border-radius: 8px;
+    cursor: pointer;
 
     p {
         font: ${(props) => props.theme.ButtonS};

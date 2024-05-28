@@ -69,8 +69,10 @@ export const Footer = styled.div`
         gap: 0.5rem;
 
         svg {
+           width: 100%;
            padding: 8px;
-           border-radius: 8px
+           border-radius: 8px;
+           cursor: pointer;
         }
     }
 `
