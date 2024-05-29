@@ -21,7 +21,7 @@ export const OrderConfirmed = () => {
               weight="fill"
               size={32}
             />
-            <p>Entrega em <span>{orderState.formDetails.street},{orderState.formDetails.number}</span> Farrapos - Porto Alegre, RS</p>
+            <p>Entrega em <span>{orderState.formDetails.street},{orderState.formDetails.number}</span> {orderState.formDetails.neighborhood}- {orderState.formDetails.city}, {orderState.formDetails.state}</p>
           </OrderItem>
           <OrderItem>
             <Timer

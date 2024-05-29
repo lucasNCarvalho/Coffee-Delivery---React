@@ -2,15 +2,18 @@ import { MapPinLine } from "@phosphor-icons/react"
 import { useFormContext } from "react-hook-form"
 import { CheckoutFooter, FormContainer, GridForm, Header, HeaderFooter, Input, PaymentContainer } from "./styled"
 import { defaultTheme } from "../../../styles/themes/default"
-import { IconLabelButton } from "../../../components/IconLabelButton/IndexButton"
 import { CreditCard, Cardholder, Money, CurrencyDollar } from "@phosphor-icons/react"
+import { Radio } from "../../../components/Radio"
+import { useState } from "react"
 
 export const CheckoutForm = () => {
 
   const { register, setValue } = useFormContext()
-
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('');
 
   const handlePaymentMethodChange = (method: string) => {
+    console.log('met', method)
+    setSelectedPaymentMethod(method)
     setValue('paymentMethod', method)
   }
 
@@ -40,7 +43,7 @@ export const CheckoutForm = () => {
           <Input placeholder="UF" id="state" {...register('state')} customwidth="3.75rem" />
         </GridForm>
 
- 
+
       </FormContainer>
       =
       <CheckoutFooter>
@@ -52,21 +55,33 @@ export const CheckoutForm = () => {
           </div>
         </HeaderFooter>
         <PaymentContainer>
-  
-          <IconLabelButton.Root onClick={() => handlePaymentMethodChange('Cartão de crédito')}>
-            <IconLabelButton.Icon icon={CreditCard} />
-            <IconLabelButton.Content text="CARTÃO DE CRÉDITO" />
-          </IconLabelButton.Root>
-
-          <IconLabelButton.Root onClick={() => handlePaymentMethodChange('Débito')}>
-            <IconLabelButton.Icon icon={Cardholder} />
-            <IconLabelButton.Content text="CARTÃO DE DEBITO" />
-          </IconLabelButton.Root>
-
-          <IconLabelButton.Root onClick={() => handlePaymentMethodChange('Dinheiro')}>
-            <IconLabelButton.Icon icon={Money} />
-            <IconLabelButton.Content text="DINHEIRO" />
-          </IconLabelButton.Root>
+          <Radio
+            handlePaymentMethodChange={handlePaymentMethodChange}
+            name="payment"
+            value="credit"
+            isSelected={selectedPaymentMethod === 'credit'}
+          >
+            <CreditCard size={16} />
+            <span>CARTÃO DE CRÉDITO</span>
+          </Radio>
+          <Radio
+          handlePaymentMethodChange={handlePaymentMethodChange}
+            name="payment"
+            value="debit"
+            isSelected={selectedPaymentMethod === 'debit'}
+          >
+            <Cardholder size={16} />
+            <span>CARTÃO DE DÉBITO</span>
+          </Radio>
+          <Radio
+            handlePaymentMethodChange={handlePaymentMethodChange}
+            name="payment"
+            value="cash"
+            isSelected={selectedPaymentMethod === 'cash'}
+          >
+            <Money size={16} />
+            <span>DINHEIRO</span>
+          </Radio>
         </PaymentContainer>
       </CheckoutFooter>
     </>

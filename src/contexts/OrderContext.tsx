@@ -26,7 +26,8 @@ export interface CreateOrderData {
         complement: string,
         city: string,
         state: string,
-        paymentMethod: 'Débito' | 'Cartão de crédito' | 'Dinheiro'
+        neighborhood: string,
+        paymentMethod: 'debit' | 'credit' | 'cash'
     }
 }
 
