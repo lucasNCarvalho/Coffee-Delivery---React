@@ -23,7 +23,9 @@ export const Card = ({ img, label, title, description, price }: CardProps) => {
     function handleCreateNewOrder() {
         const id = uuidv4()
         const data = { id, img, label, title, description, quantity, price };
-        createNewOrder(data)
+        if(quantity > 0) {
+            createNewOrder(data)
+        }
     }
 
     function incrementAdd() {

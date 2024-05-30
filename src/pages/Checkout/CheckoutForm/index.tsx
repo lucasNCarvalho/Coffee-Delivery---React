@@ -61,7 +61,7 @@ export const CheckoutForm = () => {
             value="credit"
             isSelected={selectedPaymentMethod === 'credit'}
           >
-            <CreditCard size={16} />
+            <CreditCard size={16} color={defaultTheme["purple-dark"]}/>
             <span>CARTÃO DE CRÉDITO</span>
           </Radio>
           <Radio
@@ -70,7 +70,7 @@ export const CheckoutForm = () => {
             value="debit"
             isSelected={selectedPaymentMethod === 'debit'}
           >
-            <Cardholder size={16} />
+            <Cardholder size={16} color={defaultTheme["purple-dark"]}/>
             <span>CARTÃO DE DÉBITO</span>
           </Radio>
           <Radio
@@ -79,7 +79,7 @@ export const CheckoutForm = () => {
             value="cash"
             isSelected={selectedPaymentMethod === 'cash'}
           >
-            <Money size={16} />
+            <Money size={16} color={defaultTheme["purple-dark"]}/>
             <span>DINHEIRO</span>
           </Radio>
         </PaymentContainer>

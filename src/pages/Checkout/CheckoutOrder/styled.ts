@@ -69,9 +69,11 @@ export const PriceContainer = styled.div`
     flex-direction: column;
     gap: 0.81rem;
     width: 100%;
-    color: ${(props) => props.theme["base-text"]};;
+    color: ${(props) => props.theme["base-text"]};
     border-top: 2px solid ${(props) => props.theme["base-button"]};
     padding-top: 1.5rem;
+
+
 `
 
 export const PriceItem = styled.div<PriceContainerProps>`
@@ -95,4 +97,8 @@ export const PriceButton = styled.button`
     border-radius: 8px;
     margin-bottom: 2.5rem;
     cursor: pointer;
+
+    &:hover {
+        background-color: ${(props) => props.theme["yellow-dark"]};
+    }
 `

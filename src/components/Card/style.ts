@@ -52,7 +52,6 @@ export const Footer = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-   
 
     h1 { 
         font: ${(props) => props.theme["Roboto-TextS Regular"]};
@@ -74,5 +73,6 @@ export const Footer = styled.div`
            border-radius: 8px;
            cursor: pointer;
         }
+
     }
 `

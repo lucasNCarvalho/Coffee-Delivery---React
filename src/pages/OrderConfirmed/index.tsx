@@ -7,6 +7,22 @@ import { OrderContext } from "../../contexts/OrderContext";
 
 export const OrderConfirmed = () => {
   const { orderState } = useContext(OrderContext)
+
+  const {paymentMethod} = orderState.formDetails
+  let methodPayment = ''
+
+  if(paymentMethod === 'credit') {
+    methodPayment = 'Crédito';
+  }
+
+  if(paymentMethod === 'cash') {
+    methodPayment = 'Dinheiro'
+  }
+
+  if(paymentMethod === 'debit') {
+    methodPayment = 'Débito'
+  }
+
   return (
     <OrderConfirmedContainer>
       <div>
@@ -43,7 +59,7 @@ export const OrderConfirmed = () => {
               size={32} />
             <div>
               <p>Pagamento na entrega</p>
-              <span>{orderState.formDetails.paymentMethod}</span>
+              <span>{methodPayment}</span>
             </div>
           </OrderItem>
         </OrderContent>

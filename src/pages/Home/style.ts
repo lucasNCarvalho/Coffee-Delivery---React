@@ -58,10 +58,8 @@ export const GridIcon = styled.div`
 
         svg {
            padding: 8px;
-           border-radius: 999%;
+           border-radius: 999%;  
         }
-
-
     }
 
     @media (min-width: 768px) { 
